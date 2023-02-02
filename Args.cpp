@@ -185,6 +185,7 @@ void Args::parse(const string& line) {
       maxAlloc = size_t(stod(s) * multiple + .5);
     }
     else if (key == "-log") { logStep = stoi(s); assert(logStep && (logStep % 10000 == 0)); }
+    else if (key == "-prt") { prtStep = stoi(s); assert(prtStep && (prtStep % 10000 == 0)); }
     else if (key == "-iters") { iters = stoi(s); assert(iters && (iters % 10000 == 0)); }
     else if (key == "-prp" || key == "-PRP") { prpExp = stoll(s); }
     else if (key == "-B1" || key == "-b1") { B1 = stoi(s); }

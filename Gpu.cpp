@@ -1583,10 +1583,10 @@ PRPResult Gpu::isPrimePRP(const Args &args, const Task& task) {
     u64 res = dataResidue(); // implies finish()
     bool doCheck = !res || doStop || (k % checkStep == 0) || (k >= kEndEnd) || (k - startK == 2 * blockSize);
       
-    if (k % 10000 == 0 && !doCheck) {
+    if (k % args.prtStep == 0 && !doCheck) {
       float secsPerIt = iterationTimer.reset(k);
-      // log("   %9u %6.2f%% %s %4.0f us/it\n", k, k / float(kEndEnd) * 100, hex(res).c_str(), secsPerIt * 1'000'000);
-      log("%9u %s %4.0f\n", k, hex(res).c_str(), secsPerIt * 1'000'000);
+      log("   %9u %6.2f%% %s %4.0f us/it\n", k, k / float(kEndEnd) * 100, hex(res).c_str(), secsPerIt * 1'000'000);
+      //log("%9u %s %4.0f\n", k, hex(res).c_str(), secsPerIt * 1'000'000);
     }
       
     if (doStop) {
